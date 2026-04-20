@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
 
     [Header("Speed Values")]
     private float speed;
-    private float defaultSpeed = 5;
-    private float sprintSpeed = 8;
+    public float defaultSpeed = 5;
+    public float sprintSpeed = 8;
 
     [Header("Jump Values")]
     [SerializeField] private float gravity = -9.8f;
@@ -22,11 +22,14 @@ public class Player : MonoBehaviour
 
     private Vector3 playerVelocity;
 
-    private KeyCode jumpkey = KeyCode.Space;
-
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
+    private InputAction crouchAction;
+
+    private Vector3 spawnPoint;
+    public float crouchHeightChange;
+    private float originalHeight;
 
 
     void Awake()
@@ -36,7 +39,10 @@ public class Player : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
         sprintAction = InputSystem.actions.FindAction("Sprint");
+        crouchAction = InputSystem.actions.FindAction("Crouch");
         speed = defaultSpeed;
+        spawnPoint = transform.position;
+        originalHeight = controller.height;
     }
 
     // Update is called once per frame
@@ -52,7 +58,7 @@ public class Player : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
 
     }
-
+#region Movement
     void HandleGrounding(bool isGrounded)
     {
         if (isGrounded)
@@ -91,6 +97,17 @@ public class Player : MonoBehaviour
         {
             speed = defaultSpeed;
         }
+
+        if (crouchAction.WasPressedThisFrame())
+        {
+            controller.height -= crouchHeightChange;
+            Camera.Instance.Crouch(crouchHeightChange);
+        }
+        if (crouchAction.WasReleasedThisFrame())
+        {
+            controller.height = originalHeight;
+            Camera.Instance.UnCrouch(crouchHeightChange);
+        }
     }
 
     private void HandleJump(bool isGrounded)
@@ -117,4 +134,48 @@ public class Player : MonoBehaviour
             playerVelocity.y += gravity * Time.deltaTime;
         }
     }
+    #endregion
+
+#region Collision
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Car"))
+        {
+            PlayerCarDeath();
+            Debug.Log("a");
+        }
+    if (other.CompareTag("Enemy"))
+        {
+            PlayerDeath();
+        } 
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        
+    }
+
+    #endregion
+
+    private void PlayerDeath()
+    {
+        transform.position = spawnPoint;
+    }
+
+    private void PlayerCarDeath()
+    {
+        transform.position = spawnPoint;
+    }
+
 }
