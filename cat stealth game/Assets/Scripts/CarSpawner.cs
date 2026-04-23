@@ -29,7 +29,7 @@ public class CarSpawner : MonoBehaviour
     {
         foreach (GameObject carInstance in carList)
         {
-            carInstance.transform.Translate(moveDirection * carSpeed * Time.deltaTime);
+            carInstance.transform.Translate(moveDirection * carSpeed * Time.deltaTime, Space.World);
         }
     }
 

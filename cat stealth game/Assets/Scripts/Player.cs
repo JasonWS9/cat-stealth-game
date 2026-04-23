@@ -143,7 +143,6 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             PlayerCarDeath();
-            Debug.Log("a");
         }
     if (other.CompareTag("Enemy"))
         {
@@ -171,11 +170,13 @@ public class Player : MonoBehaviour
     private void PlayerDeath()
     {
         transform.position = spawnPoint;
+        Debug.Log("died to enemy");
     }
 
     private void PlayerCarDeath()
     {
         transform.position = spawnPoint;
+        Debug.Log("died to car");
     }
 
 }
