@@ -94,7 +94,7 @@
             {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeBuilder.ActiveShapeIndex",
-                "value": "{\"m_Value\":7}"
+                "value": "{\"m_Value\":10}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -104,27 +104,27 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Cube",
-                "value": "{\"m_Value\":{\"x\":62.08428192138672,\"y\":9.47182559967041,\"z\":21.770042419433595}}"
+                "value": "{\"m_Value\":{\"x\":-0.3369467258453369,\"y\":-14.207961082458496,\"z\":4.455078125}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Stairs",
-                "value": "{\"m_Value\":{\"x\":-5.21752405166626,\"y\":1.7176501750946046,\"z\":8.919740676879883}}"
+                "value": "{\"m_Value\":{\"x\":-9.730912208557129,\"y\":2.598776340484619,\"z\":3.76727294921875}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Cone",
-                "value": "{\"m_Value\":{\"x\":14.40938663482666,\"y\":24.45847511291504,\"z\":-14.66549301147461}}"
+                "value": "{\"m_Value\":{\"x\":-2.2935867309570314,\"y\":1.045013427734375,\"z\":1.664794921875}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Arch",
-                "value": "{\"m_Value\":{\"x\":18.019264221191408,\"y\":13.572737693786621,\"z\":-5.358314514160156}}"
+                "value": "{\"m_Value\":{\"x\":-29.323129653930665,\"y\":8.055092811584473,\"z\":-3.55523681640625}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Door",
-                "value": "{\"m_Value\":{\"x\":-9.25,\"y\":-4.635865688323975,\"z\":5.0}}"
+                "value": "{\"m_Value\":{\"x\":-28.048913955688478,\"y\":3.066380500793457,\"z\":-3.653167724609375}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
