@@ -1,6 +1,8 @@
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement; // For scene reload or next level
 using UnityEngine.UI; // For optional UI message
+
 
 public class WinScript : MonoBehaviour
 {
@@ -17,10 +19,6 @@ public class WinScript : MonoBehaviour
 
         }
 
-        if (winText != null)
-        {
-            winText.gameObject.SetActive(false);
-        }
 
     }
     public void CollectItem()
@@ -37,11 +35,8 @@ public class WinScript : MonoBehaviour
     {
         Debug.Log("You Win!");
 
-        if (winText != null)
-        {
-            winText.text = "You Win!";
-            winText.gameObject.SetActive(true);
-        }
-
+        SceneManager.LoadSceneAsync("WinScreen");
     }
+
 }
+
