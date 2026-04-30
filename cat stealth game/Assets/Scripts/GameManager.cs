@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; // For optional UI message
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public int collectiblesFound;
     public int totalCollectibles;
-    public Text winText;
+    public TextMeshProUGUI winText;
 
     private void Start()
     {
@@ -44,13 +45,14 @@ public class GameManager : MonoBehaviour
             winText.text = "You Win!";
             winText.gameObject.SetActive(true);
             Time.timeScale = 0;
+            LoadScene("WinScreen");
         }
 
     }
 
-    public void LoadScene(Scene scene)
+    public void LoadScene(string scene)
     {
-        SceneManager.LoadScene(scene.ToString());
+        SceneManager.LoadScene(scene);
     }
 
     public void ExitGame()
