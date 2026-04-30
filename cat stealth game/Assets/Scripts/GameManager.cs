@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // For optional UI message
 
 public class GameManager : MonoBehaviour
 {
@@ -7,7 +8,13 @@ public class GameManager : MonoBehaviour
 
     public int collectiblesFound;
     public int totalCollectibles;
+    public Text winText;
 
+    private void Start()
+    {
+        winText.gameObject.SetActive(false);
+
+    }
     void Awake()
     {
         Instance = this;
@@ -25,7 +32,20 @@ public class GameManager : MonoBehaviour
         if (collectiblesFound >= totalCollectibles)
         {
             Debug.Log("all collectibles found");
+            TriggerWin();
         }
+    }
+    private void TriggerWin()
+    {
+        Debug.Log("You Win!");
+
+        if (winText != null)
+        {
+            winText.text = "You Win!";
+            winText.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+
     }
 
     public void LoadScene(Scene scene)
