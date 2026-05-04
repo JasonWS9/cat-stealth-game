@@ -13,7 +13,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        winText.gameObject.SetActive(false);
+        if (winText != null)
+        {
+            winText.gameObject.SetActive(false); 
+            Time.timeScale = 1;
+        }
 
     }
     void Awake()
@@ -39,15 +43,7 @@ public class GameManager : MonoBehaviour
     private void TriggerWin()
     {
         Debug.Log("You Win!");
-
-        if (winText != null)
-        {
-            winText.text = "You Win!";
-            winText.gameObject.SetActive(true);
-            Time.timeScale = 0;
-            LoadScene("WinScreen");
-        }
-
+        LoadScene("Ending 2 (Win)");
     }
 
     public void LoadScene(string scene)

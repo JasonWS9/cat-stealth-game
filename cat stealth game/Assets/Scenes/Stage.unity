@@ -7141,6 +7141,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9199037229008166721, guid: 73abc08db16cef049a979f25c388d283, type: 3}
+      propertyPath: carDespawnTimer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199037229008166721, guid: 73abc08db16cef049a979f25c388d283, type: 3}
       propertyPath: spawnRotation.y
       value: 90
       objectReference: {fileID: 0}
@@ -51013,6 +51017,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9199037229008166721, guid: 73abc08db16cef049a979f25c388d283, type: 3}
+      propertyPath: carDespawnTimer
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199037229008166721, guid: 73abc08db16cef049a979f25c388d283, type: 3}
       propertyPath: moveDirection.x
       value: 0
       objectReference: {fileID: 0}
@@ -66069,6 +66077,10 @@ PrefabInstance:
     - target: {fileID: 9199037229008166721, guid: 73abc08db16cef049a979f25c388d283, type: 3}
       propertyPath: carSpeed
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199037229008166721, guid: 73abc08db16cef049a979f25c388d283, type: 3}
+      propertyPath: carDespawnTimer
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9199037229008166721, guid: 73abc08db16cef049a979f25c388d283, type: 3}
       propertyPath: spawnRotation.y

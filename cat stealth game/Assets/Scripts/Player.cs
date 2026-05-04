@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public static Player instance;
@@ -169,13 +170,13 @@ public class Player : MonoBehaviour
 
     private void PlayerDeath()
     {
-        transform.position = spawnPoint;
+        SceneManager.LoadScene("Ending 3 (Caught)");
         Debug.Log("died to enemy");
     }
 
     private void PlayerCarDeath()
     {
-        transform.position = spawnPoint;
+        SceneManager.LoadScene("Ending 1 (Car)");
         Debug.Log("died to car");
     }
 

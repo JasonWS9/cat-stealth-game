@@ -17,5 +17,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 07863155184f5e94f8f5746caba60adc
+  - enabled: 1
+    path: Assets/Scenes/Ending 3 (Caught).unity
+    guid: 20b7735ff4b1d3a40b36a959662d4b33
+  - enabled: 1
+    path: Assets/Scenes/Ending 2 (Win).unity
+    guid: 81d74c5702dc6914297d75cb4880e1aa
+  - enabled: 1
+    path: Assets/Scenes/Ending 1 (Car).unity
+    guid: e64504a5657316e4e8a06c959119066c
+  - enabled: 1
+    path: Assets/Scenes/Story Overview.unity
+    guid: a9312e49b75f30941a3edb0e8a6e8b67
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
