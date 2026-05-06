@@ -12,12 +12,13 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("Stage");
+        SceneManager.LoadScene("Story Overview");
     }
 
     public void ExitGame()
 
     {
+        Debug.Log("Exiting");
         Application.Quit();
     }
 }

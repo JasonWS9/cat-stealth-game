@@ -29,6 +29,7 @@ public class Collectible : MonoBehaviour
 
     void Collected()
     {
+        AudioManager.instance.PlayPaperSound();
         Destroy(gameObject);
         GameManager.Instance.GainedCollectible();
     }

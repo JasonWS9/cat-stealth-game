@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Camera : MonoBehaviour
+public class PlayerCamera : MonoBehaviour
 {
-    public static Camera Instance;
+    public static PlayerCamera Instance;
 
     public float sensitivity = 2.5f;
     public float minPitch = -80f;
@@ -25,12 +25,12 @@ public class Camera : MonoBehaviour
         originalPosition = transform.position;
     }
 
-    void Update()
+    void LateUpdate()
     {
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
 
-        float mouseX = lookInput.x * sensitivity;
-        float mouseY = lookInput.y * sensitivity;
+        float mouseX = lookInput.x * sensitivity * Time.deltaTime;
+        float mouseY = lookInput.y * sensitivity * Time.deltaTime;
 
         // Rotate player left/right (yaw)
         playerBody.Rotate(Vector3.up * mouseX);

@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 public class Player : MonoBehaviour
 {
     public static Player instance;
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
     private Vector3 spawnPoint;
     public float crouchHeightChange;
     private float originalHeight;
-
+    private bool canMove = true;
 
     void Awake()
     {
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour
         speed = defaultSpeed;
         spawnPoint = transform.position;
         originalHeight = controller.height;
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
 
         HandleGrounding(isGrounded);
         HandleMovement();
-        HandleJump(isGrounded);
+        HandleJump();
 
         controller.Move(playerVelocity * Time.deltaTime);
 
@@ -82,14 +84,17 @@ public class Player : MonoBehaviour
     void HandleMovement()
     {
         // Get horizontal and vertical input
-        Vector2 moveInput = moveAction.ReadValue<Vector2>();
-        float moveX = moveInput.x;
-        float moveZ = moveInput.y;
+        if (canMove)
+        {
+            Vector2 moveInput = moveAction.ReadValue<Vector2>();
+            float moveX = moveInput.x;
+            float moveZ = moveInput.y;
 
-        // Calculate movement direction relative to the player's orientation (camera)
-        Vector3 finalMove = transform.right * moveX + transform.forward * moveZ;
-        playerVelocity.x = finalMove.x * speed;
-        playerVelocity.z = finalMove.z * speed;
+            // Calculate movement direction relative to the player's orientation (camera)
+            Vector3 finalMove = transform.right * moveX + transform.forward * moveZ;
+            playerVelocity.x = finalMove.x * speed;
+            playerVelocity.z = finalMove.z * speed;
+        }
 
         if (sprintAction.IsPressed())
         {
@@ -102,16 +107,16 @@ public class Player : MonoBehaviour
         if (crouchAction.WasPressedThisFrame())
         {
             controller.height -= crouchHeightChange;
-            Camera.Instance.Crouch(crouchHeightChange);
+            PlayerCamera.Instance.Crouch(crouchHeightChange);
         }
         if (crouchAction.WasReleasedThisFrame())
         {
             controller.height = originalHeight;
-            Camera.Instance.UnCrouch(crouchHeightChange);
+            PlayerCamera.Instance.UnCrouch(crouchHeightChange);
         }
     }
 
-    private void HandleJump(bool isGrounded)
+    private void HandleJump()
     {
         // Handle jump input
         if (coyoteTimer > 0f && jumpAction.WasPressedThisFrame())
@@ -119,6 +124,7 @@ public class Player : MonoBehaviour
             //Math equation so that you get a consistant jump height
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
             coyoteTimer = 0f;
+            AudioManager.instance.PlayMeowSound();
         }
 
         // Increases gravity based on if the player releases the key early or is falling
@@ -143,39 +149,29 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Car"))
         {
-            PlayerCarDeath();
+            StartCoroutine(PlayerCarDeath());
         }
-    if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
-            PlayerDeath();
+            EnemyDeath();
         } 
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        
     }
 
     #endregion
 
-    private void PlayerDeath()
+    private void EnemyDeath()
     {
         SceneManager.LoadScene("Ending 3 (Caught)");
         Debug.Log("died to enemy");
     }
 
-    private void PlayerCarDeath()
+    private IEnumerator PlayerCarDeath()
     {
+        AudioManager.instance.PlayHonkSound();
+        canMove = false;
+        controller.height -= crouchHeightChange * 2;
+        yield return new WaitForSeconds(2);
+        canMove = true;
         SceneManager.LoadScene("Ending 1 (Car)");
         Debug.Log("died to car");
     }

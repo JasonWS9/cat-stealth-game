@@ -18,6 +18,8 @@ public class CarSpawner : MonoBehaviour
     public float carSpawnTimer;
     public float carDespawnTimer;
 
+
+
     void Start()
     {
         spawnPoint = transform.position;
